@@ -347,7 +347,7 @@ const EditView = ({
         navigator.userAgent
       );
 
-    if (e.key === 'Enter' && !isMobile) {
+    if (e.key === 'Enter' && !isMobile && !e.nativeEvent.isComposing) {
       const enterToSubmit = useStore.getState().enterToSubmit;
       if (sticky) {
         if (
@@ -439,6 +439,7 @@ const EditView = ({
             _setContent(e.target.value);
           }}
           value={_content}
+          placeholder={t('submitPlaceholder') as string}
           onKeyDown={handleKeyDown}
           rows={1}
         ></textarea>
